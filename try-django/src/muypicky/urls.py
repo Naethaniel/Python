@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', LoginView.as_view(), name='login'),
     url(r'^profile-follow/$', ProfileFollowToggle.as_view(), name='follow'),
+    url(r'^api-auth/', include('api_test.urls')),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     url(r'^u/', include('profiles.urls', namespace='profiles')),

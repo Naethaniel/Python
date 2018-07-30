@@ -19,6 +19,11 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
 from profiles.views import ProfileFollowToggle
 from menus.views import HomeView
+from django.conf import settings
+from django.conf.urls import include, url
+
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,3 +37,9 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

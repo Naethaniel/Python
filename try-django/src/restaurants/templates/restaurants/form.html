@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if form.errors.not_field_errors %}
+        {{ form.errors.not_field_errors }}
+    {% endif %}
+<h1>Add restaurant</h1>
+    <form method="POST"> {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
